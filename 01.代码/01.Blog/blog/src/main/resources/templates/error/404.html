@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Main Title</title>
+    <!--引入semantic-ui-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--引入css-->
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+<nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>Main Page</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>Classification</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>Label</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>Archive</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i>About me</a>
+            <div class="right m-item  item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--导航按钮-->
+    <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+
+</nav>
+<br>
+<br>
+<br>
+
+<div class="m-container-small m-padded-tb-massiv">
+    <div class="ui error message m-padded-tb-massiv">
+        <div class="ui container">
+            <h1>This is 404</h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massiv">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <!--3-->
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img th:src="@{/images/wechat.jpg}" class="ui rounded image" alt="" style="width: 120px">
+                    </div>
+                </div>
+            </div>
+            <!--3-->
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Lastest</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item"></a>
+                    <a href="#" class="item"></a>
+                </div>
+            </div>
+            <!--3-->
+            <div class="three wide column ">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Contact</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email</a>
+                    <a href="#" class="item"></a>
+                    <a href="#" class="item"></a>
+                </div>
+            </div>
+            <!--7-->
+            <div class="seven wide column ">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Introduction</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">This is my personal blog, share latest Stock market news, Portfolio, ZhiFuBao funds</p>
+            </div>
+        </div>
+        <!--底部线-->
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright ©2021 He Zhu designed by He Zhu</p>
+    </div>
+
+</footer>
+</body>
+</html>

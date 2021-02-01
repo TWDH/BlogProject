@@ -1,0 +1,7 @@
+2021-01-28 11:34:33.713  INFO 23992 --- [restartedMain] com.hezhu.BlogApplication                : Starting BlogApplication using Java 15.0.1 on DESKTOP-RVPIET4 with PID 23992 (E:\3.Java\4.Java项目\01.Blog\blog\target\classes started by HeZhu in E:\3.Java\4.Java项目\01.Blog\blog)
+2021-01-28 11:34:33.714  INFO 23992 --- [restartedMain] com.hezhu.BlogApplication                : The following profiles are active: pro
+2021-01-28 11:34:34.183  WARN 23992 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.hezhu]' package. Please check your configuration.
+2021-01-28 11:34:34.717  WARN 23992 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-01-28 11:34:34.949  WARN 23992 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-01-28 11:34:35.078  WARN 23992 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-01-28 11:34:35.213  INFO 23992 --- [restartedMain] com.hezhu.BlogApplication                : Started BlogApplication in 1.776 seconds (JVM running for 2.231)
