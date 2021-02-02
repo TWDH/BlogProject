@@ -80,6 +80,7 @@
                         <label class="ui compact teal basic label">分类</label>
                         <div class="ui fluid selection dropdown">
                             <!--得到type的id并传向后端， type属性不为空的时候才调用type.id-->
+                            <!--新建博客时，先传进来一个Blog对象，用th:value进行赋值-->
                             <input type="hidden" name="type.id" th:value="*{type}!=null ? *{type.id}">
                             <i class="dropdown icon"></i>
                             <div class="default text">分类</div>

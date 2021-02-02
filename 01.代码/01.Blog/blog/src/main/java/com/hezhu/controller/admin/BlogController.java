@@ -2,6 +2,7 @@ package com.hezhu.controller.admin;
 
 
 import com.hezhu.po.Blog;
+import com.hezhu.po.Type;
 import com.hezhu.po.User;
 import com.hezhu.service.BlogService;
 import com.hezhu.service.TagService;
@@ -53,8 +54,7 @@ public class BlogController {
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                          BlogQuery blog, Model model) {
-        int pageNumber = pageable.getPageNumber();
-        System.out.println(pageNumber);
+
         //查询分页
         Page<Blog> blogs = blogService.listBlog(pageable, blog);
 
@@ -67,6 +67,7 @@ public class BlogController {
     @GetMapping("/blogs/input")
     public String input(Model model) {
         //初始化,前端就可以拿到数据并赋值
+        //types包括数据库中的所有type，比如java, python, javascript, ...
         setTypeAndTag(model);
         model.addAttribute("blog", new Blog());
 
@@ -76,14 +77,17 @@ public class BlogController {
     //发布博客
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
-        //需要知道是谁发了博客，之前再LoginController中已经向session中注入过user了
+
+        //需要知道是谁发了博客，之前在LoginController中已经向session中注入过user了
         blog.setUser((User) session.getAttribute("user"));
         //通过当前类型的id找到当前博客的分类
         blog.setType(typeService.getType(blog.getType().getId()));
-        //Tag
+        //Tag：这时候只有tagId（编号），而没有tag属性
         blog.setTags(tagService.listTag(blog.getTagIds()));
+
         //Dao保存博客
         Blog b = blogService.saveBlog(blog);
+
         if (b == null) {
             attributes.addFlashAttribute("message", "Failed");
         } else {
@@ -96,6 +100,7 @@ public class BlogController {
     @GetMapping("/blogs/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         setTypeAndTag(model);
+        //通过id得到全部blog的信息
         Blog blog = blogService.getBlog(id);
         //把tagId处理成字符串
         blog.init();
