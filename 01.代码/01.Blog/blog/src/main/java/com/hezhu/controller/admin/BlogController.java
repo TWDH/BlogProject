@@ -40,7 +40,7 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
-    //分页
+    //分页查询
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                         BlogQuery blog, Model model) {
@@ -69,7 +69,8 @@ public class BlogController {
         //初始化,前端就可以拿到数据并赋值
         //types包括数据库中的所有type，比如java, python, javascript, ...
         setTypeAndTag(model);
-        model.addAttribute("blog", new Blog());
+        Blog newblog = new Blog();
+        model.addAttribute("blog", newblog);
 
         return INPUT;
     }
