@@ -51,7 +51,7 @@
             <input type="hidden" name="page" >
             <div class="inline fields">
                 <div class="field">
-                    <input type="text" name="title" placeholder="标题">
+                    <input type="" name="title" placeholder="标题">
                 </div>
                 <div class="field">
                     <div class="ui labeled action input">
@@ -68,8 +68,8 @@
                         </div>
                         <button id="clear-btn" class="ui compact button">clear</button>
                     </div>
-
                 </div>
+
                 <div class="field">
                     <div class="ui checkbox">
                         <input type="checkbox" id="recommend" name="recommend">
@@ -200,7 +200,10 @@
     ;
 
     function page(obj) {
+        /*获取隐含域page，并用val赋值（动态获取的data-page里面的值）*/
+        //page尚未被赋值
         $("[name='page']").val($(obj).data("page"));
+        //page已经获取data-page中的值
         loaddata();
     }
 
@@ -208,6 +211,7 @@
         $("[name='page']").val(0);
         loaddata();
     });
+
     function loaddata() {
         $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
             title : $("[name='title']").val(),

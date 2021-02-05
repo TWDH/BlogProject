@@ -1,11 +1,15 @@
 com\hezhu\service\TypeServiceImpl.class
+com\hezhu\util\MarkdownUtils$1.class
 com\hezhu\po\Tag.class
 com\hezhu\NotFoundException.class
+com\hezhu\controller\CommentController.class
 com\hezhu\BlogApplication.class
 com\hezhu\dao\TypeRepository.class
 com\hezhu\util\MyBeanUtils.class
 com\hezhu\service\TagServiceImpl.class
 com\hezhu\service\TagService.class
+com\hezhu\dao\CommentRepository.class
+com\hezhu\util\MarkdownUtils$CustomAttributeProvider.class
 com\hezhu\service\BlogServiceImpl.class
 com\hezhu\dao\BlogRepository.class
 com\hezhu\controller\admin\BlogController.class
@@ -17,8 +21,11 @@ com\hezhu\controller\admin\LoginController.class
 com\hezhu\util\MD5Utils.class
 com\hezhu\service\UserService.class
 com\hezhu\dao\UserRepository.class
+com\hezhu\service\CommentService.class
+com\hezhu\util\MarkdownUtils.class
 com\hezhu\handler\ControllerExceptionHandler.class
 com\hezhu\po\Type.class
+com\hezhu\service\CommentServiceImpl.class
 com\hezhu\po\Blog.class
 com\hezhu\po\User.class
 com\hezhu\aspect\LogAspect.class

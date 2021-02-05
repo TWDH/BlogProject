@@ -87,7 +87,15 @@ public class BlogController {
         blog.setTags(tagService.listTag(blog.getTagIds()));
 
         //Dao保存博客
-        Blog b = blogService.saveBlog(blog);
+        Blog b;
+        if(blog.getId() == null){
+            //新建
+            b = blogService.saveBlog(blog);
+        }else {
+            //编辑
+            b = blogService.updateBlog(blog.getId(), blog);
+        }
+
 
         if (b == null) {
             attributes.addFlashAttribute("message", "Failed");

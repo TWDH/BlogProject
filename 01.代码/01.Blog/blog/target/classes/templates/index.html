@@ -19,7 +19,7 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>Main Page</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>aaaMain Page</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>Classification</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>Label</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>Archive</a>
@@ -56,13 +56,62 @@
                         </div>
                         <!--靠右-->
                         <div class="right aligned column">
-                            Totally <h2 class="ui orange header m-inline-block">15</h2> articles
+                            Totally <h2 class="ui orange header m-inline-block" th:text="${page.totalElements}">15</h2> articles
                         </div>
                     </div>
                 </div>
 
                 <!--主体 content-->
                 <div class="ui attached segment">
+                    <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+                        <!--从后端获取每条数据-->
+                        <div class="ui middle aligned mobile reversed stackable m-padded-sides grid">
+                            <!--左侧文章-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black" th:text="${blog.title}">你知道什么事财富自由吗？</a></h3>
+                                <p class="m-text" th:text="|${blog.description}......|">人民日报：加强反垄断监管是为了更好发展
+                                    报道中表明，这是我国在互联网领域加强反垄断监管的一项重要举措，有利于规范行业秩序、促进平台经济长远健康发展。
+                                </p>
+                                <!--底部作者-->
+                                <div class="ui grid">
+                                    <!--左-->
+                                    <div class="eleven wide column">
+                                        <!--横向排列-->
+                                        <div class="ui horizontal link list">
+                                            <!--作者-->
+                                            <div class="item">
+                                                <!--@获取链接-->
+                                                <img src="https://picsum.photos/id/1025/100/100" th:src="@{${blog.user.avatar}}" alt=""class="ui avatar image">
+                                                <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">He Zhu</a></div>
+                                            </div>
+                                            <!--日历-->
+                                            <div class="item">
+                                                <!--格式化时间：dates.format-->
+                                                <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2020-1-25</span>
+                                            </div>
+                                            <!---->
+                                            <div class="item">
+                                                <i class="eye icon"></i> <span th:text="${blog.views}">2322</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--右-->
+                                    <div class="right aligned five wide column">
+                                        <a href="#" target="_blank" class="ui teal basic label m-padded-mini m-text-thin" th:text="${blog.type.name}">Cognitive</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--右侧图片-->
+                            <div class="five wide column">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                    <!--在线图片-->
+                                    <img src="https://picsum.photos/id/1025/800/450" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/*-->
                     <div class="ui padded vertical segment m-padded-tb-large">
                         <div class="ui mobile reversed stackable m-padded-sides grid">
                             <!--左侧文章-->
@@ -333,63 +382,19 @@
 
                         </div>
                     </div>
-                    <div class="ui padded vertical segment m-padded-tb-large">
-                        <div class="ui mobile reversed stackable m-padded-sides grid">
-                            <!--左侧文章-->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">你知道什么事财富自由吗？</h3>
-                                <p class="m-text">人民日报：加强反垄断监管是为了更好发展
-                                    报道中表明，这是我国在互联网领域加强反垄断监管的一项重要举措，有利于规范行业秩序、促进平台经济长远健康发展。
-                                </p>
-                                <!--底部作者-->
-                                <div class="ui grid">
-                                    <!--左-->
-                                    <div class="eleven wide column">
-                                        <!--横向排列-->
-                                        <div class="ui horizontal link list">
-                                            <!--作者-->
-                                            <div class="item">
-                                                <img src="https://picsum.photos/id/1025/100/100" alt=""class="ui avatar image">
-                                                <div class="content"><a href="#" class="header">He Zhu</a></div>
-                                            </div>
-                                            <!--日历-->
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2020-1-25
-                                            </div>
-                                            <!---->
-                                            <div class="item">
-                                                <i class="eye icon"></i> 2322
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--右-->
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank" class="ui teal basic label m-padded-mini m-text-thin">Cognitive</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--右侧图片-->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <!--在线图片-->
-                                    <img src="https://picsum.photos/id/1025/800/450" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
+                    <!--*/-->
                 </div>
 
 
                 <!--底部 footer-->
-                <div class="ui attached segment">
+                <div class="ui attached segment" th:if="${page.totalPages}>1">
                     <!--再分两部分-->
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <a href="#" class="ui mini teal basic button">Previous Page</a>
+                            <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">Previous Page</a>
                         </div>
                         <div class="right aligned column">
-                            <a href="#" class="ui mini teal basic button">Next Page</a>
+                            <a href="#" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">Next Page</a>
                         </div>
                     </div>
                 </div>
@@ -413,6 +418,12 @@
                     <div class="class ui teal segment">
                         <!--菜单-->
                         <div class="ui fluid vertical menu">
+                            <a href="#" class="item" th:each="type : ${types}">
+                                <span th:text="${type.name}">Learning</span>
+                                <!--thymeleaf, #arrays.length()拿到集合的长度-->
+                                <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
+                            </a>
+                            <!--/*-->
                             <a href="#" class="item">
                                 Learning
                                 <div class="ui teal basic left pointing label">13</div>
@@ -433,10 +444,7 @@
                                 Learning
                                 <div class="ui teal basic left pointing label">13</div>
                             </a>
-                            <a href="#" class="item">
-                                Learning
-                                <div class="ui teal basic left pointing label">13</div>
-                            </a>
+                            <!--*/-->
                         </div>
                     </div>
                 </div>
@@ -455,6 +463,11 @@
                     </div>
                     <!--小标签-->
                     <div class="ui teal segment">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny"  th:each="tag : ${tags}">
+                            <span th:text="${tag.name}">Methodology</span>
+                            <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+                        </a>
+                        <!--/*-->
                         <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             Methodology<div class="detail">23</div>
                         </a>
@@ -482,13 +495,9 @@
                         <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             Methodology<div class="detail">23</div>
                         </a>
-                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
-                            Methodology<div class="detail">23</div>
-                        </a>
-
+                        <!--*/-->
 
                     </div>
-
                 </div>
 
                 <!--最新推荐-->
@@ -499,9 +508,10 @@
                         <div class="column"><i class="bookmark icon"></i>Recommendations</div>
                     </div>
                     <!--推荐列表-->
-                    <div class="ui centered segment ">
-                        <a href="#" target="_blank" class="m-black"> Earn your first 1 million dollars</a>
+                    <div class="ui centered segment" th:each="blog : ${recommendBlogs}">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}"> Earn your first 1 million dollars</a>
                     </div>
+                    <!--/*-->
                     <div class="ui segment">
                         <a href="#" target="_blank" class="m-black">User Story</a>
                     </div>
@@ -514,6 +524,7 @@
                     <div class="ui segment">
                         <a href="#" target="_blank" class="m-black">User Story</a>
                     </div>
+                    <!--*/-->
 
                 </div>
 

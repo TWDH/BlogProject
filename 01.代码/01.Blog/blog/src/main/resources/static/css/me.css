@@ -138,6 +138,10 @@ body{
     color: black !important;
 }
 
+.m-teal{
+    color: #00B5AD;
+}
+
 /*--------shadow---------*/
 .m-shadow-small{
     -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.5) !important;
