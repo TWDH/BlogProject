@@ -1,0 +1,14 @@
+spring:
+  thymeleaf:
+    mode: HTML
+
+  profiles:
+    active: dev
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    database: mysql
+  messages:
+    encoding: utf-8
+
+
+comment.avatar: /images/avatar.jpg
